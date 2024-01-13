@@ -47,6 +47,7 @@
 			$numero_tarjeta = trim($_POST['numero_tarjeta']);
 			$tarjeta_habiente = trim($_POST['tarjeta_habiente']);
 		  $fecha= date("Y-m-d");
+		  //$total = strval(intval($_POST['total']));
 		  $son_letras = num2letras($total);
 			$numero_tarjeta =  str_replace ( "-", "", $numero_tarjeta);
 

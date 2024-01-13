@@ -131,6 +131,7 @@ try {
 		$numero_resolucion = $column["p_numero_resolucion"];
 		$serie = $column["p_serie"];
 		$numero_comprobante = $column["p_numero_comprobante"];
+
 		$empleado = $column["p_empleado"];
 		$numero_venta = $column["p_numero_venta"];
 		$fecha_venta = $column["p_fecha_venta"];
@@ -150,6 +151,7 @@ try {
 		$cambio = $column["p_cambio"];
 		$moneda = $column["p_moneda"];
 		$estado = $column["p_estado"];
+
 		$nombre_cliente = $column["p_nombre_cliente"];
 		$direccion_cliente = $column["p_direccion_cliente"];
 		$telefono_cliente = $column["p_telefono_cliente"];
@@ -173,139 +175,289 @@ try {
 
 	if ($tipo_comprobante == '3') {
 
-		$pdf->SetFont('Arial', '', 12);
-		$pdf->SetAutoPageBreak(true, 1);
+		// $pdf->SetFont('Arial', '', 12);
+		// $pdf->SetAutoPageBreak(true, 1);
 
-		include('../includes/ticketheader.inc.php');
+		// include('../includes/ticketheader.inc.php');
 
-		$pdf->SetFont('Arial', '', 9.2);
-		$pdf->Text(2, $get_YH + 2, '------------------------------------------------------------------');
-		$pdf->SetFont('Arial', 'B', 8.5);
-		$pdf->Text(22, $get_YH  + 5, 'FACTURA ELECTRONICA');
-		$pdf->Text(28, $get_YH  + 10, 'F003 - ' . str_pad($numero_comprobante, 9, '0', STR_PAD_LEFT));
+		// $pdf->SetFont('Arial', '', 9.2);
+		// $pdf->Text(2, $get_YH + 2, '------------------------------------------------------------------');
+		// $pdf->SetFont('Arial', 'B', 8.5);
+		// $pdf->Text(22, $get_YH  + 5, 'N FACTURA');
+		// $pdf->Text(28, $get_YH  + 10, $serie . ' - ' . str_pad($numero_comprobante, 7, '0', STR_PAD_LEFT));
 
-		//$pdf->Text(55, $get_YH + 10, 'Caja No.: 1');
-		$pdf->Text(3, $get_YH + 15, 'Fecha : ' . $fecha_venta);
-		//$pdf->Text(4, $get_YH + 15, 'No. Ticket : '.$numero_comprobante);
+		// //$pdf->Text(55, $get_YH + 10, 'Caja No.: 1');
+		// $pdf->Text(3, $get_YH + 15, 'Fecha : ' . $fecha_venta);
+		// //$pdf->Text(4, $get_YH + 15, 'No. Ticket : '.$numero_comprobante);
 
-		//	$pdf->Text(48, $get_YH  + 15, 'Cajero : '.substr($empleado, 0,6));
-		$pdf->Text(46, $get_YH  + 15, 'RUC : ' . $numero_cedula_c);
+		// //	$pdf->Text(48, $get_YH  + 15, 'Cajero : '.substr($empleado, 0,6));
+		// $pdf->Text(46, $get_YH  + 15, 'RUC : ' . $numero_cedula_c);
 
-		$pdf->Text(3, $get_YH + 20, 'R.S : ' . substr($nombre_cliente, 0, 35));
+		// $pdf->Text(3, $get_YH + 20, 'R.S : ' . substr($nombre_cliente, 0, 35));
 
-		$pdf->Text(3, $get_YH + 24, 'Dir : ' . substr($direccion_cliente, 0, 37));
+		// $pdf->Text(3, $get_YH + 24, 'Dir : ' . substr($direccion_cliente, 0, 37));
 
-		$pdf->SetFont('Arial', '', 9.2);
-		//$pdf->Text(2, $get_YH + 23, '------------------------------------------------------------------');
+		// $pdf->SetFont('Arial', '', 9.2);
+		// //$pdf->Text(2, $get_YH + 23, '------------------------------------------------------------------');
 
-		$pdf->SetXY(2, $get_YH + 25);
-		$pdf->SetFillColor(255, 255, 255);
-		$pdf->SetFont('Arial', 'B', 8.5);
-		$pdf->Cell(13, 4, 'Cantid', 0, 0, 'L', 1);
-		$pdf->Cell(28, 4, 'Descripcion', 0, 0, 'L', 1);
-		$pdf->Cell(16, 4, 'Precio', 0, 0, 'L', 1);
-		$pdf->Cell(12, 4, 'Total', 0, 0, 'L', 1);
-		$pdf->SetFont('Arial', '', 8.5);
-		$pdf->Text(2, $get_YH + 29, '-----------------------------------------------------------------------');
-		$pdf->Ln(6);
+		// $pdf->SetXY(2, $get_YH + 25);
+		// $pdf->SetFillColor(255, 255, 255);
+		// $pdf->SetFont('Arial', 'B', 8.5);
+		// $pdf->Cell(13, 4, 'Cantid', 0, 0, 'L', 1);
+		// $pdf->Cell(28, 4, 'Descripcion', 0, 0, 'L', 1);
+		// $pdf->Cell(16, 4, 'Precio', 0, 0, 'L', 1);
+		// $pdf->Cell(12, 4, 'Total', 0, 0, 'L', 1);
+		// $pdf->SetFont('Arial', '', 8.5);
+		// $pdf->Text(2, $get_YH + 29, '-----------------------------------------------------------------------');
+		// $pdf->Ln(6);
+		// $item = 0;
+		// while ($row = $detalle->fetch(PDO::FETCH_ASSOC)) {
+		// 	$item = $item + 1;
+		// 	$pdf->setX(2.1);
+		// 	$pdf->Cell(13, 4, $row['cantidad'], 0, 0, 'L');
+		// 	$pdf->SetFont('Arial', '', 6);
+		// 	$pdf->Cell(28, 4, substr($row['nombre_producto'], 0, 20), 0, 0, 'L', 1);
+		// 	$pdf->SetFont('Arial', '', 8.5);
+		// 	$pdf->Cell(8, 4, $row['importe'], 0, 0, 'L', 1);
+		// 	$pdf->Ln(4.5);
+		// 	$get_Y = $pdf->GetY();
+		// }
+
+		// $pdf->Text(2, $get_Y + 1, '-----------------------------------------------------------------------');
+		// $pdf->SetFont('Arial', 'B', 8.5);
+		// $pdf->Text(4, $get_Y + 5, 'G = GRAVADO');
+		// $pdf->Text(30, $get_Y + 5, 'E = EXENTO');
+
+		// $pdf->Text(4, $get_Y + 10, 'SUBTOTAL :');
+		// $pdf->Text(57, $get_Y + 10, $sumas);
+		// $pdf->Text(4, $get_Y + 15, 'IGV :');
+		// $pdf->Text(57, $get_Y + 15, $iva);
+		// $pdf->Text(4, $get_Y + 20, 'GRAVADO :');
+		// $pdf->Text(57, $get_Y + 20, $subtotal);
+		// $pdf->Text(4, $get_Y + 25, 'DESCUENTO :');
+		// $pdf->Text(56, $get_Y + 25, '-' . $descuento);
+		// $pdf->Text(4, $get_Y + 30, 'TOTAL A PAGAR :');
+		// $pdf->SetFont('Arial', 'B', 8.5);
+		// $pdf->Text(57, $get_Y + 30, $total);
+		// $pdf->Text(2, $get_Y + 33, '-----------------------------------------------------------------------');
+		// $pdf->Text(4, $get_Y + 36, 'Numero de Productos :');
+		// $pdf->Text(57, $get_Y + 36, $numero_productos);
+
+		// if ($tipo_pago == 'EFECTIVO') {
+
+		// 	$pdf->Text(24, $get_Y + 40, 'Efectivo :');
+		// 	$pdf->Text(57, $get_Y + 40, $efectivo);
+		// 	$pdf->Text(24, $get_Y + 44, 'Cambio :');
+		// 	$pdf->Text(57, $get_Y + 44, $cambio);
+
+
+		// 	$pdf->Text(2, $get_Y + 47, '-----------------------------------------------------------------------');
+		// 	$pdf->SetFont('Arial', 'BI', 8.5);
+		// 	$pdf->Text(3, $get_Y + 52, 'Son: ' . $sonletras . ' soles');
+		// 	if ($estado == '2') :
+		// 		$pdf->Text(3, $get_Y + 55, 'Esta venta ha sido al credito');
+		// 		$pdf->SetFont('Arial', 'B', 8.5);
+		// 	endif;
+
+		// 	$pdf->Image('http://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=' . $numero_venta . '&.png', 22, $get_Y + 54);
+		// 	$pdf->SetFont('Arial', 'B', 8.5);
+		// 	$pdf->Text(18, $get_Y + 88, 'GRACIAS POR SU COMPRA');
+		// 	$pdf->SetFillColor(0, 0, 0);
+		// 	//	$pdf->Code39(9,$get_Y+64,$numero_venta,1,5);
+		// 	//		$pdf->Text(28, $get_Y+74, '*'.$numero_venta.'*');
+
+		// } else if ($tipo_pago == 'TARJETA') {
+
+		// 	$pdf->Text(20, $get_Y + 40.5, 'No. Tarjeta :');
+		// 	$pdf->Text(40, $get_Y + 40.5, $numero_tarjeta);
+		// 	$pdf->Text(23, $get_Y + 45, 'Debitado :');
+		// 	$pdf->Text(57, $get_Y + 45, $total);
+
+		// 	$pdf->Text(2, $get_Y + 47, '-----------------------------------------------------------------------');
+		// 	$pdf->SetFont('Arial', 'BI', 8.5);
+		// 	$pdf->Text(3, $get_Y + 52, 'Precios en : ' . $moneda);
+		// 	$pdf->SetFont('Arial', 'B', 8.5);
+		// 	if ($estado == '2') :
+		// 		$pdf->Text(3, $get_Y + 55, 'Esta venta ha sido al credito');
+		// 		$pdf->SetFont('Arial', 'B', 8.5);
+		// 	endif;
+		// 	$pdf->Text(19, $get_Y + 62, 'GRACIAS POR SU COMPRA');
+		// 	$pdf->SetFillColor(0, 0, 0);
+		// 	$pdf->Text(28, $get_Y + 74, '*' . $numero_venta . '*');
+		// } else if ($tipo_pago == 'EFECTIVO Y TARJETA') {
+
+		// 	$pdf->Text(24, $get_Y + 41, 'Efectivo :');
+		// 	$pdf->Text(57, $get_Y + 41, $efectivo);
+
+		// 	$pdf->Text(20, $get_Y + 46, 'No. Tarjeta :');
+		// 	$pdf->Text(40, $get_Y + 46, $numero_tarjeta);
+		// 	$pdf->Text(23, $get_Y + 51, 'Debitado :');
+		// 	$pdf->Text(57, $get_Y + 51, $pago_tarjeta);
+
+		// 	$pdf->Text(2, $get_Y + 53, '-----------------------------------------------------------------------');
+		// 	$pdf->SetFont('Arial', 'BI', 8.5);
+		// 	$pdf->Text(3, $get_Y + 58, 'Precios en : ' . $moneda);
+		// 	$pdf->SetFont('Arial', '', 8.5);
+		// 	$pdf->Text(3, $get_Y + 63, 'Venta realizada con dos metodos de pago');
+		// 	$pdf->SetFont('Arial', 'B', 8.5);
+		// 	if ($estado == '2') :
+		// 		$pdf->Text(3, $get_Y + 66, 'Esta venta ha sido al credito');
+		// 		$pdf->SetFont('Arial', 'B', 8.5);
+		// 	endif;
+		// 	$pdf->Text(19, $get_Y + 73, 'GRACIAS POR SU COMPRA');
+		// 	$pdf->SetFillColor(0, 0, 0);
+		// 	$pdf->Text(28, $get_Y + 84, '*' . $numero_venta . '*');
+		// }
+
+		$pdf = new FPDF($orientation = 'P', $unit = 'mm');
+		$pdf->AddPage();
+		$pdf->SetFont('Arial', 'B', 20);
+		$textypos = 5;
+		$pdf->setY(12);
+		$pdf->setX(10);
+		// Agregamos los datos de la empresa
+		$pdf->Cell(5, $textypos, $empresa);
+		$pdf->SetFont('Arial', 'B', 10);
+		$pdf->setY(30);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, "DE:");
+		$pdf->SetFont('Arial', '', 10);
+		$pdf->setY(35);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, $empresa);
+		$pdf->setY(40);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, $direccion);
+		$pdf->setY(45);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, "Telefono de la empresa");
+		$pdf->setY(50);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, "Email de la empresa");
+
+		// Agregamos los datos del cliente
+		$pdf->SetFont('Arial', 'B', 10);
+		$pdf->setY(30);
+		$pdf->setX(75);
+		$pdf->Cell(5, $textypos, "PARA:");
+		$pdf->SetFont('Arial', '', 10);
+		$pdf->setY(35);
+		$pdf->setX(75);
+		$pdf->Cell(5, $textypos, "Nombre: ".$nombre_cliente);
+		$pdf->setY($pdf->GetY() + $textypos);
+		$pdf->setX(75);
+
+		$pdf->MultiCell(50, $textypos, "Direccion: ". $direccion_cliente);
+		$pdf->setY($pdf->GetY()); // Ajuste dinámico de la posición en Y después de MultiCell
+		$pdf->setX(75);
+
+		$pdf->Cell(5, $textypos, "Telefono: ". $telefono_cliente);
+		$pdf->setY($pdf->GetY() + $textypos);
+		$pdf->setX(75);
+
+		$pdf->Cell(5, $textypos, "Ruc: " . $numero_cedula_c);
+		$pdf->setY($pdf->GetY() + $textypos);
+		$pdf->setX(75);
+
+
+		// Agregamos los datos del cliente
+		$pdf->SetFont('Arial', 'B', 10);
+		$pdf->setY(30);
+		$pdf->setX(135);
+		$pdf->Cell(5, $textypos, "FACTURA ". $serie.' - '.$numero_comprobante);
+		$pdf->SetFont('Arial', '', 10);
+		$pdf->setY(35);
+		$pdf->setX(135);
+		$pdf->Cell(5, $textypos, "Timbrado ". $numero_resolucion);
+		$pdf->setY(40);
+		$pdf->setX(135);
+		$pdf->Cell(5, $textypos, "Vencimiento: 11/ENE/2020");
+		$pdf->setY(45);
+		$pdf->setX(135);
+		$pdf->Cell(5, $textypos, "");
+		$pdf->setY(50);
+		$pdf->setX(135);
+		$pdf->Cell(5, $textypos, "");
+
+		/// Apartir de aqui empezamos con la tabla de productos
+		$pdf->setY(60);
+		$pdf->setX(135);
+		$pdf->Ln();
+		/////////////////////////////
+		//// Array de Cabecera
+		$header = array("Cod.", "Descripcion", "Cant.", "Precio", "Total");
+		//// Arrar de Productos
+		$products = array(
+			array("0010", "Producto 1", 2, 120, 0),
+			array("0024", "Producto 2", 5, 80, 0),
+			array("0001", "Producto 3", 1, 40, 0),
+			array("0001", "Producto 3", 5, 80, 0),
+			array("0001", "Producto 3", 4, 30, 0),
+			array("0001", "Producto 3", 7, 80, 0),
+		);
+		// Column widths
+		$w = array(20, 95, 20, 25, 25);
+		// Header
+		for ($i = 0; $i < count($header); $i++)
+			$pdf->Cell($w[$i], 7, $header[$i], 1, 0, 'C');
+		$pdf->Ln();
+		// Data
 		$item = 0;
 		while ($row = $detalle->fetch(PDO::FETCH_ASSOC)) {
 			$item = $item + 1;
-			$pdf->setX(2.1);
-			$pdf->Cell(13, 4, $row['cantidad'], 0, 0, 'L');
-			$pdf->SetFont('Arial', '', 6);
-			$pdf->Cell(28, 4, substr($row['nombre_producto'], 0, 20), 0, 0, 'L', 1);
-			$pdf->SetFont('Arial', '', 8.5);
-			$pdf->Cell(8, 4, $row['importe'], 0, 0, 'L', 1);
-			$pdf->Ln(4.5);
+			$pdf->Cell($w[0], 6, 'dfgdf', 1);
+			$pdf->Cell($w[1], 6, $row['nombre_producto'], 1);
+			$pdf->Cell($w[2], 6, $row['cantidad'], 1);
+			$pdf->Cell($w[3], 6, $row['importe'], 1);
+			$pdf->Cell($w[4], 6, floatval($row['importe']) * floatval($row['cantidad']), 1);
+
+			$pdf->Ln(5.7);
 			$get_Y = $pdf->GetY();
 		}
+		/////////////////////////////
+		//// Apartir de aqui esta la tabla con los subtotales y totales
+		$yposdinamic = 60 + (count($products) * 10);
 
-		$pdf->Text(2, $get_Y + 1, '-----------------------------------------------------------------------');
-		$pdf->SetFont('Arial', 'B', 8.5);
-		$pdf->Text(4, $get_Y + 5, 'G = GRAVADO');
-		$pdf->Text(30, $get_Y + 5, 'E = EXENTO');
+		$pdf->setY($yposdinamic);
+		$pdf->setX(235);
+		$pdf->Ln();
+		/////////////////////////////
+		$header = array("", "");
+		$data2 = array(
+			array("Subtotal", $sumas),
+			array("Descuento", $descuento),
+			array("Impuesto", $iva),
+			array("Total", $total),
+		);
+		// Column widths
+		$w2 = array(40, 40);
+		// Header
 
-		$pdf->Text(4, $get_Y + 10, 'SUBTOTAL :');
-		$pdf->Text(57, $get_Y + 10, $sumas);
-		$pdf->Text(4, $get_Y + 15, 'IGV :');
-		$pdf->Text(57, $get_Y + 15, $iva);
-		$pdf->Text(4, $get_Y + 20, 'GRAVADO :');
-		$pdf->Text(57, $get_Y + 20, $subtotal);
-		$pdf->Text(4, $get_Y + 25, 'DESCUENTO :');
-		$pdf->Text(56, $get_Y + 25, '-' . $descuento);
-		$pdf->Text(4, $get_Y + 30, 'TOTAL A PAGAR :');
-		$pdf->SetFont('Arial', 'B', 8.5);
-		$pdf->Text(57, $get_Y + 30, $total);
-		$pdf->Text(2, $get_Y + 33, '-----------------------------------------------------------------------');
-		$pdf->Text(4, $get_Y + 36, 'Numero de Productos :');
-		$pdf->Text(57, $get_Y + 36, $numero_productos);
+		$pdf->Ln();
+		// Data
+		foreach ($data2 as $row) {
+			$pdf->setX(115);
+			$pdf->Cell($w2[0], 6, $row[0], 1);
+			$pdf->Cell($w2[1], 6, "$ " . number_format($row[1], 2, ".", ","), '1', 0, 'R');
 
-		if ($tipo_pago == 'EFECTIVO') {
-
-			$pdf->Text(24, $get_Y + 40, 'Efectivo :');
-			$pdf->Text(57, $get_Y + 40, $efectivo);
-			$pdf->Text(24, $get_Y + 44, 'Cambio :');
-			$pdf->Text(57, $get_Y + 44, $cambio);
-
-
-			$pdf->Text(2, $get_Y + 47, '-----------------------------------------------------------------------');
-			$pdf->SetFont('Arial', 'BI', 8.5);
-			$pdf->Text(3, $get_Y + 52, 'Son: ' . $sonletras . ' soles');
-			if ($estado == '2') :
-				$pdf->Text(3, $get_Y + 55, 'Esta venta ha sido al credito');
-				$pdf->SetFont('Arial', 'B', 8.5);
-			endif;
-
-			$pdf->Image('http://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=' . $numero_venta . '&.png', 22, $get_Y + 54);
-			$pdf->SetFont('Arial', 'B', 8.5);
-			$pdf->Text(18, $get_Y + 88, 'GRACIAS POR SU COMPRA');
-			$pdf->SetFillColor(0, 0, 0);
-			//	$pdf->Code39(9,$get_Y+64,$numero_venta,1,5);
-			//		$pdf->Text(28, $get_Y+74, '*'.$numero_venta.'*');
-
-		} else if ($tipo_pago == 'TARJETA') {
-
-			$pdf->Text(20, $get_Y + 40.5, 'No. Tarjeta :');
-			$pdf->Text(40, $get_Y + 40.5, $numero_tarjeta);
-			$pdf->Text(23, $get_Y + 45, 'Debitado :');
-			$pdf->Text(57, $get_Y + 45, $total);
-
-			$pdf->Text(2, $get_Y + 47, '-----------------------------------------------------------------------');
-			$pdf->SetFont('Arial', 'BI', 8.5);
-			$pdf->Text(3, $get_Y + 52, 'Precios en : ' . $moneda);
-			$pdf->SetFont('Arial', 'B', 8.5);
-			if ($estado == '2') :
-				$pdf->Text(3, $get_Y + 55, 'Esta venta ha sido al credito');
-				$pdf->SetFont('Arial', 'B', 8.5);
-			endif;
-			$pdf->Text(19, $get_Y + 62, 'GRACIAS POR SU COMPRA');
-			$pdf->SetFillColor(0, 0, 0);
-			$pdf->Text(28, $get_Y + 74, '*' . $numero_venta . '*');
-		} else if ($tipo_pago == 'EFECTIVO Y TARJETA') {
-
-			$pdf->Text(24, $get_Y + 41, 'Efectivo :');
-			$pdf->Text(57, $get_Y + 41, $efectivo);
-
-			$pdf->Text(20, $get_Y + 46, 'No. Tarjeta :');
-			$pdf->Text(40, $get_Y + 46, $numero_tarjeta);
-			$pdf->Text(23, $get_Y + 51, 'Debitado :');
-			$pdf->Text(57, $get_Y + 51, $pago_tarjeta);
-
-			$pdf->Text(2, $get_Y + 53, '-----------------------------------------------------------------------');
-			$pdf->SetFont('Arial', 'BI', 8.5);
-			$pdf->Text(3, $get_Y + 58, 'Precios en : ' . $moneda);
-			$pdf->SetFont('Arial', '', 8.5);
-			$pdf->Text(3, $get_Y + 63, 'Venta realizada con dos metodos de pago');
-			$pdf->SetFont('Arial', 'B', 8.5);
-			if ($estado == '2') :
-				$pdf->Text(3, $get_Y + 66, 'Esta venta ha sido al credito');
-				$pdf->SetFont('Arial', 'B', 8.5);
-			endif;
-			$pdf->Text(19, $get_Y + 73, 'GRACIAS POR SU COMPRA');
-			$pdf->SetFillColor(0, 0, 0);
-			$pdf->Text(28, $get_Y + 84, '*' . $numero_venta . '*');
+			$pdf->Ln();
 		}
+		/////////////////////////////
+
+		$yposdinamic += (count($data2) * 10);
+		$pdf->SetFont('Arial', 'B', 10);
+
+		$pdf->setY($yposdinamic);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, $sonletras . ' guaranies');
+		$pdf->SetFont('Arial', '', 10);
+
+		$pdf->setY($yposdinamic + 10);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, "El cliente se compromete a pagar la factura.");
+		$pdf->setY($yposdinamic + 20);
+		$pdf->setX(10);
+		$pdf->Cell(5, $textypos, "Powered by Evilnapsis");
 	} else if ($tipo_comprobante == '2') {
 
 		$pdf->SetFont('Arial', '', 12);
@@ -440,161 +592,7 @@ try {
 		}
 
 
-		/*
-    
-    $pdf->SetFont('Arial','B',16);
-    $pdf->setXY(10,6);
-    $pdf->Cell(40,10,$empresa);
-
-
-    $pdf->setXY(150,6);
-    $pdf->SetFont('Arial','',11);
-    $pdf->Cell(34,10,'NO. FACTURA : ');
-    $pdf->SetFont('Arial','B',11);
-    $pdf->Cell(30,10,$numero_comprobante);
-    $pdf->SetFont('Arial','',10);
-    
-    $pdf->setXY(10,6);
-    $pdf->SetFont('Arial','',8);
-    $pdf->Cell(50,20,$propietario);
-    $pdf->setX(10);
-    $pdf->SetFont('Arial','',10);
-    $pdf->Cell(2,30,$direccion);
-    $pdf->setX(10);
-    $pdf->SetFont('Arial','B',10);
-    
-    
-    
-    $pdf->SetFont('Arial','',10);
-    $pdf->setXY(10,23);
-    $pdf->Cell(38,7,'FECHA DE VENTA : ');
-    $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(38,7,$fecha_venta);
-
-
-
-    $pdf->SetFont('Arial','',10);
-    $pdf->setXY(10,28);
-    $pdf->Cell(38,7,'CLIENTE : ');
-    $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(10,7,$nombre_cliente);
-    $pdf->setXY(110,28);
-    $pdf->SetFont('Arial','',10);
-    $pdf->Cell(10,7,$direccion_cliente);
-    
-    $pdf->setXY(10,33);
-    $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(2,7,'RUC : ');
-    $pdf->setXY(22.5,33);
-    $pdf->SetFont('Arial','',10);
-    $pdf->Cell(2,7,$numero_cedula_c);
-    
-    $pdf->setXY(48,33);
-    $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(2,7,'TELEFONO : ');
-    $pdf->SetFont('Arial','',10);
-    $pdf->setXY(70,33);
-    $pdf->Cell(2,7,$telefono_cliente);
-
-
-
-    //$pdf->Line(210,60,10,60);
-    $pdf->Ln(10);
-
-
-    $pdf->SetFillColor(172,172,172);
-    $pdf->Cell(23,5,'Cant.',1,0,'L',1);
-    $pdf->Cell(85,5,'Producto',1,0,'L',1);
-    $pdf->Cell(23,5,'Precio',1,0,'C',1);
-    $pdf->Cell(23,5,'Exento',1,0,'C',1);
-    $pdf->Cell(23,5,'Descuento',1,0,'C',1);
-    $pdf->Cell(23,5,'Total',1,0,'C',1);
-    $pdf->SetFillColor(255,255,255);
-    $pdf->Ln(5);
-
-    $pdf->SetWidths(array(23,85,23,23,23,23));
-
-    if (is_array($detalle) || is_object($detalle))
-    {
-        foreach ($detalle as $row => $column) {
-         $pdf->SetAligns('C');
-         $pdf->setX(10);
-        if($column['nombre_producto'] == null){
-            $pdf->Row(array($column["cantidad"],$column["nombre_producto"],$column["precio_unitario"],$column["exento"],
-            $column["descuento"],$column["importe"]));
-          } else {
-            $pdf->Row(array($column["cantidad"],$column["nombre_producto"],$column["precio_unitario"],$column["exento"],
-            $column["descuento"],$column["importe"]));
-          }
-         $get_Y = $pdf->GetY();
-      }
-
-
-
- $pdf->Text(11,$get_Y + 39,'GRACIAS POR SU COMPRA');
-      $pdf->SetFont('Arial','B',12);
-      $pdf->Cell(144,35,'',1,0,'C',1);
-      $pdf->Text(60,$get_Y + 5,'SON');
-      $pdf->SetFont('Arial','',12);
-      $pdf->Text(15,$get_Y + 10,$sonletras);
-      $pdf->setX(154);
-      $pdf->SetFillColor(172,172,172);
-      $pdf->SetFont('Arial','B',8.5);
-      $pdf->Cell(33,5,'SUMAS',1,0,'R',1);
-      $pdf->SetFont('Arial','',8.5);
-      $pdf->SetFillColor(255,255,255);
-      $pdf->Cell(23,5,$sumas,1,0,'C',1);
-      $pdf->Ln(5);
-      $pdf->setX(154);
-      $pdf->SetFillColor(172,172,172);
-      $pdf->SetFont('Arial','B',8.5);
-      $pdf->Cell(33,5,'IVA',1,0,'R',1);
-      $pdf->SetFillColor(255,255,255);
-      $pdf->SetFont('Arial','',8.5);
-      $pdf->Cell(23,5,$iva,1,0,'C',1);
-      $pdf->Ln(5);
-      $pdf->setX(154);
-      $pdf->SetFillColor(172,172,172);
-      $pdf->SetFont('Arial','B',8.5);
-      $pdf->Cell(33,5,'SUBTOTAL',1,0,'R',1);
-      $pdf->SetFillColor(255,255,255);
-      $pdf->SetFont('Arial','',8.5);
-      $pdf->Cell(23,5,$subtotal,1,0,'C',1);
-      $pdf->Ln(5);
-      $pdf->setX(154);
-      $pdf->SetFillColor(172,172,172);
-      $pdf->SetFont('Arial','B',8.5);
-      $pdf->Cell(33,5,'RETENCION',1,0,'R',1);
-      $pdf->SetFillColor(255,255,255);
-      $pdf->SetFont('Arial','',8.5);
-      $pdf->Cell(23,5,$retenido,1,0,'C',1);
-      $pdf->Ln(5);
-      $pdf->setX(154);
-      $pdf->SetFillColor(172,172,172);
-      $pdf->SetFont('Arial','B',8.5);
-      $pdf->Cell(33,5,'TOTAL EXENTO',1,0,'R',1);
-      $pdf->SetFont('Arial','',8.5);
-      $pdf->SetFillColor(255,255,255);
-      $pdf->Cell(23,5,$exento,1,0,'C',1);
-      $pdf->Ln(5);
-      $pdf->setX(154);
-      $pdf->SetFillColor(172,172,172);
-      $pdf->SetFont('Arial','B',8.5);
-      $pdf->Cell(33,5,'TOTAL DESCUENTO',1,0,'R',1);
-      $pdf->SetFillColor(255,255,255);
-      $pdf->SetFont('Arial','',8.5);
-      $pdf->Cell(23,5,$descuento,1,0,'C',1);
-      $pdf->Ln(5);
-      $pdf->setX(154);
-      $pdf->SetFillColor(172,172,172);
-      $pdf->SetFont('Arial','B',8.5);
-      $pdf->Cell(33,5,'TOTAL PAGAR',1,0,'R',1);
-      $pdf->SetFillColor(255,255,255);
-      $pdf->SetFont('Arial','',8.5);
-      $pdf->Cell(23,5,$total,1,0,'C',1);
-
-
-*/
+		
 	}
 
 

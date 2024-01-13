@@ -4,14 +4,17 @@
 
     $pdf->setXY(2,10);
     $pdf->SetFont('Arial', '', 6.9);
-    $pdf->MultiCell(73, 4.2, 'JR ANDAHUAYLAS 239 URB BARRIOS ALTOS
-Cercado de lima', 0,'C',0 ,1);
+    $pdf->MultiCell(73, 4.2, 'Barrio: '.$direccion, 0,'C',0 ,1);
+
+    $pdf->setXY(2,13);
+    $pdf->SetFont('Arial', '', 6.9);
+    $pdf->MultiCell(73, 4.2, 'Timbrado: '.$numero_resolucion, 0,'C',0 ,1);
 
     $get_YD = $pdf->GetY();
 
     $pdf->setXY(2,6);
     $pdf->SetFont('Arial', '', 8);
-    $pdf->MultiCell(73, 4.2, 'R.U.C.:20601669774', 0,'C',0 ,1);
+    $pdf->MultiCell(73, 4.2, 'R.U.C.:5231545', 0,'C',0 ,1);
 
 
     //$pdf->setXY(2,$get_YD);

@@ -6,3 +6,7 @@ entro en el if:
 SQLSTATE[HY000]: General error: 1267 Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '='
 entro en el if: 
 Validado
+entro en el if: 
+Validado
+entro en el if: 
+Validado
