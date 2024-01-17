@@ -40,6 +40,7 @@ if ($tipo_usuario == 1) {
 
 					<?php
 					$filas = $objTiraje->Listar_Tirajes();
+				
 					if (is_array($filas) || is_object($filas)) {
 						foreach ($filas as $row => $column) {
 							$fecha_resolucion = $column["fecha_resolucion"];
@@ -75,7 +76,11 @@ if ($tipo_usuario == 1) {
 								                     '<?php print($column["hasta"]); ?>',
 								                     '<?php print($column["disponibles"]); ?>',
 								                     '<?php print($column["usados"]); ?>',
-								                     '<?php print($column["idcomprobante"]); ?>')">
+								                     '<?php print($column["idcomprobante"]); ?>',
+								                     '<?php print($column["fecha_inicio"]); ?>',
+								                     '<?php print($column["fecha_fin"]); ?>',
+					
+													 )">
 														<i class="icon-pencil6">
 														</i> Editar</a></li>
 												<li><a href="javascript:;" data-toggle="modal" data-target="#modal_iconified" onclick="openTiraje('ver',
@@ -164,6 +169,20 @@ if ($tipo_usuario == 1) {
 								<div class="col-sm-7">
 									<label>Serie <span class="text-danger">*</span></label>
 									<input type="text" id="txtNoSerie" name="txtNoSerie" placeholder="DEL 15UN00000001|1 AL 1515UN00000001|20000" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-5">
+									<label>Fecha inicio <span class="text-danger">*</span></label>
+									<input type="date" id="fecha_inicio" name="fecha_inicio"  class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+								</div>
+
+								<div class="col-sm-7">
+									<label>Fecha fin <span class="text-danger">*</span></label>
+									<input type="date" id="fecha_fin" name="fecha_fin"  class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
 								</div>
 							</div>
 						</div>

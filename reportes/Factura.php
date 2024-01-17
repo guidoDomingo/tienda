@@ -127,7 +127,10 @@ try {
 		$propietario = $column["p_propietario"];
 		$direccion = $column["p_direccion"];
 		$numero_cedula = $column["p_numero_nit"];
+		$ruc = $column["p_numero_nrc"];
 		$fecha_resolucion = $column["p_fecha_resolucion"];
+		$fecha_inicio = $column["p_fecha_inicio"];
+		$fecha_fin = $column["p_fecha_fin"];
 		$numero_resolucion = $column["p_numero_resolucion"];
 		$serie = $column["p_serie"];
 		$numero_comprobante = $column["p_numero_comprobante"];
@@ -343,16 +346,12 @@ try {
 		$pdf->SetFont('Arial', '', 10);
 		$pdf->setY(35);
 		$pdf->setX(75);
-		$pdf->Cell(5, $textypos, "Nombre: ".$nombre_cliente);
-		$pdf->setY($pdf->GetY() + $textypos);
+		$pdf->MultiCell(50, $textypos, "Nombre: ".$nombre_cliente);
+		$pdf->setY($pdf->GetY());
 		$pdf->setX(75);
 
 		$pdf->MultiCell(50, $textypos, "Direccion: ". $direccion_cliente);
 		$pdf->setY($pdf->GetY()); // Ajuste dinámico de la posición en Y después de MultiCell
-		$pdf->setX(75);
-
-		$pdf->Cell(5, $textypos, "Telefono: ". $telefono_cliente);
-		$pdf->setY($pdf->GetY() + $textypos);
 		$pdf->setX(75);
 
 		$pdf->Cell(5, $textypos, "Ruc: " . $numero_cedula_c);
@@ -362,22 +361,22 @@ try {
 
 		// Agregamos los datos del cliente
 		$pdf->SetFont('Arial', 'B', 10);
-		$pdf->setY(30);
+		$pdf->setY(10);
 		$pdf->setX(135);
-		$pdf->Cell(5, $textypos, "FACTURA ". $serie.' - '.$numero_comprobante);
+		$pdf->Cell(5, $textypos, "FACTURA: ". $serie.' - '.$numero_comprobante);
 		$pdf->SetFont('Arial', '', 10);
-		$pdf->setY(35);
+		$pdf->setY(15);
 		$pdf->setX(135);
-		$pdf->Cell(5, $textypos, "Timbrado ". $numero_resolucion);
-		$pdf->setY(40);
+		$pdf->Cell(5, $textypos, "Timbrado: ". $numero_resolucion);
+		$pdf->setY(19);
 		$pdf->setX(135);
-		$pdf->Cell(5, $textypos, "Vencimiento: 11/ENE/2020");
-		$pdf->setY(45);
+		$pdf->Cell(5, $textypos, "Fecha inicio: ".$fecha_inicio);
+		$pdf->setY(23);
 		$pdf->setX(135);
-		$pdf->Cell(5, $textypos, "");
-		$pdf->setY(50);
+		$pdf->Cell(5, $textypos, "Fecha fin: ".$fecha_fin);
+		$pdf->setY(27);
 		$pdf->setX(135);
-		$pdf->Cell(5, $textypos, "");
+		$pdf->Cell(5, $textypos, "Ruc: ". $ruc);
 
 		/// Apartir de aqui empezamos con la tabla de productos
 		$pdf->setY(60);
@@ -403,6 +402,9 @@ try {
 		$pdf->Ln();
 		// Data
 		$item = 0;
+		// Guarda la posición Y actual
+		$startY = $pdf->GetY();
+
 		while ($row = $detalle->fetch(PDO::FETCH_ASSOC)) {
 			$item = $item + 1;
 			$pdf->Cell($w[0], 6, 'dfgdf', 1);
@@ -416,7 +418,11 @@ try {
 		}
 		/////////////////////////////
 		//// Apartir de aqui esta la tabla con los subtotales y totales
-		$yposdinamic = 60 + (count($products) * 10);
+		// Calcula la altura total de las filas
+		$alturaFilas = $pdf->GetY() - $startY;
+
+		// Ajusta la posición Y para la tabla de subtotales
+		$yposdinamic = $startY + ($alturaFilas - 7); // Puedes ajustar el valor 5 según sea necesario
 
 		$pdf->setY($yposdinamic);
 		$pdf->setX(235);

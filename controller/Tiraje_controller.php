@@ -16,15 +16,15 @@
 		
 		}
 
-		public function Insertar_Tiraje($fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante){
+		public function Insertar_Tiraje($fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante, $fecha_inicio, $fecha_fin){
 
-			$cmd = TirajeModel::Insertar_Tiraje($fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante);
+			$cmd = TirajeModel::Insertar_Tiraje($fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante, $fecha_inicio, $fecha_fin);
 			
 		}
 
-		public function Editar_Tiraje($idtiraje, $fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante){
+		public function Editar_Tiraje($idtiraje, $fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante, $fecha_inicio, $fecha_fin){
 
-			$cmd = TirajeModel::Editar_Tiraje($idtiraje, $fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante);
+			$cmd = TirajeModel::Editar_Tiraje($idtiraje, $fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante, $fecha_inicio, $fecha_fin);
 			
 		}
 

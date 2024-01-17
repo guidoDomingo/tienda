@@ -30,7 +30,7 @@ if ($tipo_usuario == 1) {
 						<th>No</th>
 						<th>Empresa</th>
 						<th>Propietario</th>
-						<th>NIT</th>
+						<th>RUC</th>
 						<th>% IVA</th>
 						<th class="text-center">Opciones</th>
 					</tr>
@@ -171,7 +171,7 @@ if ($tipo_usuario == 1) {
 								</div>
 
 								<div class="col-sm-6">
-									<label>NIT <span class="text-danger">*</span></label>
+									<label>Ruc <span class="text-danger">*</span></label>
 									<input type="text" id="txtNRC" name="txtNRC" placeholder="EJ. 10465911706" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
 								</div>
 

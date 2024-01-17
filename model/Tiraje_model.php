@@ -53,12 +53,12 @@
 		}
 
 
-		public function Insertar_Tiraje($fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante)
+		public function Insertar_Tiraje($fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante, $fecha_inicio, $fecha_fin)
 		{
 			$dbconec = Conexion::Conectar();
 			try 
 			{
-				$query = "CALL sp_insert_tiraje_comprobante(:fecha_resolucion, :numero_resolucion, :serie, :desde, :hasta, :disponibles, :idcomprobante)";
+				$query = "CALL sp_insert_tiraje_comprobante(:fecha_resolucion, :numero_resolucion, :serie, :desde, :hasta, :disponibles, :idcomprobante, :fecha_inicio, :fecha_fin)";
 				$stmt = $dbconec->prepare($query);
 				$stmt->bindParam(":fecha_resolucion",$fecha_resolucion);
 				$stmt->bindParam(":numero_resolucion",$numero_resolucion);
@@ -67,6 +67,8 @@
 				$stmt->bindParam(":hasta",$hasta);
 				$stmt->bindParam(":disponibles",$disponibles);
 				$stmt->bindParam(":idcomprobante",$idcomprobante);
+				$stmt->bindParam(":fecha_inicio",$fecha_inicio);
+				$stmt->bindParam(":fecha_fin",$fecha_fin);
 
 				if($stmt->execute())
 				{
@@ -93,13 +95,13 @@
 
 		}
 
-		public function Editar_Tiraje($idtiraje, $fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante)
+		public function Editar_Tiraje($idtiraje, $fecha_resolucion, $numero_resolucion, $serie, $desde, $hasta, $disponibles, $idcomprobante, $fecha_inicio, $fecha_fin)
 		{
 			$dbconec = Conexion::Conectar();
 			try 
 			{
 				$query = "CALL sp_update_tiraje_comprobante(:idtiraje, :fecha_resolucion, 
-				:numero_resolucion, :serie, :desde, :hasta,  :disponibles, :idcomprobante);";
+				:numero_resolucion, :serie, :desde, :hasta,  :disponibles, :idcomprobante, :fecha_inicio, :fecha_fin);";
 				$stmt = $dbconec->prepare($query);
 				$stmt->bindParam(":idtiraje",$idtiraje);
 				$stmt->bindParam(":fecha_resolucion",$fecha_resolucion);
@@ -109,6 +111,8 @@
 				$stmt->bindParam(":hasta",$hasta);
 				$stmt->bindParam(":disponibles",$disponibles);
 				$stmt->bindParam(":idcomprobante",$idcomprobante);
+				$stmt->bindParam(":fecha_inicio",$fecha_inicio);
+				$stmt->bindParam(":fecha_fin",$fecha_fin);
 
 
 				if($stmt->execute())

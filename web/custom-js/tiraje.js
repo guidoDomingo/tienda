@@ -198,7 +198,7 @@ function newTiraje()
     openTiraje('nuevo',null,null,null,null,null,null,null,null,null);
     $('#modal_iconified').modal('show');
  }
-function openTiraje(action, idtiraje, fecha_resolucion, numero_resolucion, serie, desde, hasta, disponibles, usados, idcomprobante)
+function openTiraje(action, idtiraje, fecha_resolucion, numero_resolucion, serie, desde, hasta, disponibles, usados, idcomprobante, fecha_inicio, fecha_fin)
  {
 
     $('#modal_iconified').on('shown.bs.modal', function () {
@@ -248,6 +248,8 @@ function openTiraje(action, idtiraje, fecha_resolucion, numero_resolucion, serie
       $('#txtAl').val(hasta);
       $('#txtDispo').val(disponibles);
       $('#txtUsados').val(usados);
+      $('#fecha_inicio').val(fecha_inicio);
+      $('#fecha_fin').val(fecha_fin);
       $("#cbCompro").val(idcomprobante).trigger("change");
 
 
@@ -309,9 +311,11 @@ function enviar_frm()
   var hasta =$("#txtAl").val();
   var disponibles =$("#txtDispo").val();
   var idcomprobante =$("#cbCompro").val();
+  var fecha_inicio =$("#fecha_inicio").val();
+  var fecha_fin =$("#fecha_fin").val();
 
   var dataString='proceso='+proceso+'&id='+id+'&fecha_resolucion='+fecha_resolucion+'&numero_resolucion='+numero_resolucion+'&serie='+serie;
-  dataString+='&desde='+desde+'&hasta='+hasta+'&disponibles='+disponibles+'&idcomprobante='+idcomprobante;
+  dataString+='&desde='+desde+'&hasta='+hasta+'&disponibles='+disponibles+'&idcomprobante='+idcomprobante+'&fecha_inicio='+fecha_inicio+'&fecha_fin='+fecha_fin;
 
   $.ajax({
      type:'POST',
