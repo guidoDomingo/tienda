@@ -61,15 +61,15 @@
 						$_SESSION['apellido_empleado'] = $row['apellido_empleado'];
 
 					   $data = "Validado";
-					   $url_base = 'C:\xampp743\htdocs';
-					   error_log($data . PHP_EOL, 3, $url_base.'\tienda1\error_log.txt');
+					//    $url_base = 'C:\xampp743\htdocs';
+					//    error_log($data . PHP_EOL, 3, $url_base.'\tienda1\error_log.txt');
 					   echo json_encode($data);
 
 					} else {
 
 						$data = "Bad Pass";
-						$url_base = 'C:\xampp743\htdocs';
-					   error_log($data . PHP_EOL, 3, $url_base.'\tienda1\error_log.txt');
+					// 	$url_base = 'C:\xampp743\htdocs';
+					//    error_log($data . PHP_EOL, 3, $url_base.'\tienda1\error_log.txt');
 						echo json_encode($data);
 					}
 
@@ -77,8 +77,8 @@
 
 			}  catch (Exception $e) {
 				$data = "Error";
-				$url_base = 'C:\xampp743\htdocs';
-					   error_log($e->getMessage() . PHP_EOL, 3, $url_base.'\tienda1\error_log.txt');
+				// $url_base = 'C:\xampp743\htdocs';
+				// 	   error_log($e->getMessage() . PHP_EOL, 3, $url_base.'\tienda1\error_log.txt');
 				echo json_encode($data);
 
 			}
