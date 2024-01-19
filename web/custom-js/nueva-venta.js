@@ -1203,7 +1203,7 @@ $.getJSON('web/ajax/ajxparametro.php?criterio=moneda',function(data){
 
            iva = valor_iva / 100;
            porc_rete = porcentaje_retencion / 100;
-           iva_div = iva + 1;
+           iva_div = iva;
 
             $("#tbldetalle tbody tr").each(function (index)
                 {
@@ -1292,10 +1292,13 @@ z
                       if(total_sumas >= monto_retencion){
                          iva_retenido = total_sumas * porc_rete;
                          total = ((subtotal + total_exentos) - iva_retenido) - total_descuentos;
-
+                         total_iva = total / valor_iva;
                       } else {
 
                          total = (subtotal + total_exentos) - total_descuentos;
+                         console.log("total",total);
+                         total_iva = total / valor_iva;
+                         console.log("total_iva",total_iva);
                       }
                 })
 

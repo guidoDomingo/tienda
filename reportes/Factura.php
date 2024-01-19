@@ -129,8 +129,8 @@ try {
 		$numero_cedula = $column["p_numero_nit"];
 		$ruc = $column["p_numero_nrc"];
 		$fecha_resolucion = $column["p_fecha_resolucion"];
-		$fecha_inicio = $column["p_fecha_inicio"];
-		$fecha_fin = $column["p_fecha_fin"];
+		$fecha_inicio = $column["p_fecha_inicio"] ?? '';
+		$fecha_fin = $column["p_fecha_fin"] ?? '';
 		$numero_resolucion = $column["p_numero_resolucion"];
 		$serie = $column["p_serie"];
 		$numero_comprobante = $column["p_numero_comprobante"];
@@ -333,10 +333,10 @@ try {
 		$pdf->Cell(5, $textypos, $direccion);
 		$pdf->setY(45);
 		$pdf->setX(10);
-		$pdf->Cell(5, $textypos, "Telefono de la empresa");
+		$pdf->Cell(5, $textypos, "");
 		$pdf->setY(50);
 		$pdf->setX(10);
-		$pdf->Cell(5, $textypos, "Email de la empresa");
+		$pdf->Cell(5, $textypos, "");
 
 		// Agregamos los datos del cliente
 		$pdf->SetFont('Arial', 'B', 10);
@@ -350,9 +350,9 @@ try {
 		$pdf->setY($pdf->GetY());
 		$pdf->setX(75);
 
-		$pdf->MultiCell(50, $textypos, "Direccion: ". $direccion_cliente);
-		$pdf->setY($pdf->GetY()); // Ajuste dinámico de la posición en Y después de MultiCell
-		$pdf->setX(75);
+		// $pdf->MultiCell(50, $textypos, "Direccion: ". $direccion_cliente);
+		// $pdf->setY($pdf->GetY()); // Ajuste dinámico de la posición en Y después de MultiCell
+		// $pdf->setX(75);
 
 		$pdf->Cell(5, $textypos, "Ruc: " . $numero_cedula_c);
 		$pdf->setY($pdf->GetY() + $textypos);
@@ -384,18 +384,10 @@ try {
 		$pdf->Ln();
 		/////////////////////////////
 		//// Array de Cabecera
-		$header = array("Cod.", "Descripcion", "Cant.", "Precio", "Total");
-		//// Arrar de Productos
-		$products = array(
-			array("0010", "Producto 1", 2, 120, 0),
-			array("0024", "Producto 2", 5, 80, 0),
-			array("0001", "Producto 3", 1, 40, 0),
-			array("0001", "Producto 3", 5, 80, 0),
-			array("0001", "Producto 3", 4, 30, 0),
-			array("0001", "Producto 3", 7, 80, 0),
-		);
+		$header = array("Cod.", "Descripcion", "Cant.", "Precio", "Exentas","5%","10%");
+	
 		// Column widths
-		$w = array(20, 95, 20, 25, 25);
+		$w = array(20, 70, 15, 25, 15,10,27);
 		// Header
 		for ($i = 0; $i < count($header); $i++)
 			$pdf->Cell($w[$i], 7, $header[$i], 1, 0, 'C');
@@ -407,15 +399,52 @@ try {
 
 		while ($row = $detalle->fetch(PDO::FETCH_ASSOC)) {
 			$item = $item + 1;
-			$pdf->Cell($w[0], 6, 'dfgdf', 1);
-			$pdf->Cell($w[1], 6, $row['nombre_producto'], 1);
-			$pdf->Cell($w[2], 6, $row['cantidad'], 1);
-			$pdf->Cell($w[3], 6, $row['importe'], 1);
-			$pdf->Cell($w[4], 6, floatval($row['importe']) * floatval($row['cantidad']), 1);
+			
+		
+			// Descripción
+			$descripcion = $row['nombre_producto'];
+			if ($pdf->GetStringWidth($descripcion) > $w[1]) {
+				$pdf->Cell($w[0], 6 * 2, 'dfgdf', 1);
+				// Guardar la posición actual
+				$x = $pdf->GetX();
+				$y = $pdf->GetY();
 
-			$pdf->Ln(5.7);
-			$get_Y = $pdf->GetY();
+				
+				// Usar MultiCell
+				$pdf->MultiCell($w[1], 6, $descripcion, 1, 'J');
+		
+				// Restaurar la posición después de MultiCell
+				$pdf->SetXY($x + $w[1], $y);
+		
+				// Cantidad, Importe, y otras celdas
+				$pdf->Cell($w[2], 6 * 2, $row['cantidad'], 1);
+				$pdf->Cell($w[3], 6 * 2, $row['precio_unitario'], 1);
+				$pdf->Cell($w[4], 6 * 2, "", 1);
+				$pdf->Cell($w[5], 6 * 2, "", 1);
+				$pdf->Cell($w[6], 6 * 2, $row['importe'], 1);
+		
+				// Actualizar posición Y después de imprimir la fila
+				$pdf->Ln(5.7 *2);
+				$get_Y = $pdf->GetY();
+			} else {
+				$pdf->Cell($w[0], 6, 'dfgdf', 1);
+				// Si la descripción no necesita MultiCell, usar Cell
+				$pdf->Cell($w[1], 6, $descripcion, 1);
+		
+				// Cantidad, Importe, y otras celdas
+				$pdf->Cell($w[2], 6, $row['cantidad'], 1);
+				$pdf->Cell($w[3], 6, $row['precio_unitario'], 1);
+				$pdf->Cell($w[4], 6, "", 1);
+				$pdf->Cell($w[5], 6, "", 1);
+				$pdf->Cell($w[6], 6, floatval($row['precio_unitario']) * floatval($row['cantidad']), 1);
+		
+				// Actualizar posición Y después de imprimir la fila
+				$pdf->Ln(5.7);
+				$get_Y = $pdf->GetY();
+			}
 		}
+		
+		
 		/////////////////////////////
 		//// Apartir de aqui esta la tabla con los subtotales y totales
 		// Calcula la altura total de las filas
@@ -444,7 +473,7 @@ try {
 		foreach ($data2 as $row) {
 			$pdf->setX(115);
 			$pdf->Cell($w2[0], 6, $row[0], 1);
-			$pdf->Cell($w2[1], 6, "$ " . number_format($row[1], 2, ".", ","), '1', 0, 'R');
+			$pdf->Cell($w2[1], 6, "Gs. " . number_format($row[1], 2, ".", ","), '1', 0, 'R');
 
 			$pdf->Ln();
 		}
@@ -455,15 +484,13 @@ try {
 
 		$pdf->setY($yposdinamic);
 		$pdf->setX(10);
-		$pdf->Cell(5, $textypos, $sonletras . ' guaranies');
+		$pdf->Cell(5, $textypos, 'Total a pagar: '.$sonletras . ' guaranies');
 		$pdf->SetFont('Arial', '', 10);
 
 		$pdf->setY($yposdinamic + 10);
 		$pdf->setX(10);
-		$pdf->Cell(5, $textypos, "El cliente se compromete a pagar la factura.");
-		$pdf->setY($yposdinamic + 20);
-		$pdf->setX(10);
-		$pdf->Cell(5, $textypos, "Powered by Evilnapsis");
+		$pdf->Cell(5, $textypos, "Gracias por la compra.");
+	
 	} else if ($tipo_comprobante == '2') {
 
 		$pdf->SetFont('Arial', '', 12);
