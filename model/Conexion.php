@@ -7,7 +7,7 @@
 
 			$driver = 'mysql'; //mysql no cambiar
 			$host = 'localhost'; //localhost
-			$dbname = 'tiendasanti'; //bdd
+			$dbname = 'tienda1'; //bdd
 			$username ='guido'; //usuario
 			$passwd = 'Guido123'; //contrase�a
 
