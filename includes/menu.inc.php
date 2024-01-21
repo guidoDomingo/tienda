@@ -79,7 +79,7 @@
 						<!-- /Ventas -->
 
 						<!-- Ventas -->
-					 	<li>
+					 	<!-- <li>
 							<a href="#"><i class="icon-price-tags2"></i> <span>Apartados</span></a>
 							<ul>
 								<li><a href="./?View=POS-A">Apartar Productos</a></li>
@@ -87,7 +87,7 @@
 								<li><a href="./?View=Apartados-Fecha">Consultar Apartados por Fecha</a></li>
 								<li><a href="./?View=Apartados-Mes">Consultar Apartados por Mes</a></li>
 							</ul>
-						</li> 
+						</li>  -->
 						<!-- /Ventas -->
 
 						<!-- Creditos -->

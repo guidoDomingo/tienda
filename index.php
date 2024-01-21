@@ -1,7 +1,8 @@
 <?php
 	// session_start();
 	 require_once("config/app.conf.php");
-	 date_default_timezone_set('America/Lima');
+	 date_default_timezone_set('America/Asuncion');
+
 	 
 	  function __autoload($className){
 	            $model = "model/". $className ."_model.php";
