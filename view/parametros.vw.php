@@ -166,7 +166,7 @@ if ($tipo_usuario == 1) {
 						<div class="form-group">
 							<div class="row">
 								<div class="col-sm-6">
-									<label>CUI <span class="text-danger">*</span></label>
+									<label>C.I <span class="text-danger">*</span></label>
 									<input type="text" id="txtNIT" name="txtNIT" placeholder="EJ. 46591170" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
 								</div>
 

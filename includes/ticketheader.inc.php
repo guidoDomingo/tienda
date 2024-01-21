@@ -23,7 +23,7 @@
     /*INGRESAR EN ESTA LINEA EL TELEFONO DEL TICKET*/
 
     $pdf->setXY(2,$get_YD);
-    $pdf->MultiCell(73, 4.2, 'almacenesgm.sac@hotmail.com', 0,'C',0 ,1);
+    $pdf->MultiCell(73, 4.2, '', 0,'C',0 ,1);
 
 
    /* $pdf->setXY(2,$get_YD + 8);

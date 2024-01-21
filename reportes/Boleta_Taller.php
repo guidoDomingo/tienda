@@ -117,9 +117,9 @@
     $pdf->Cell(2,30,$direccion_empresa);
     $pdf->setX(10);
     $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(2,40,'CUI : ');
+    $pdf->Cell(2,40,'C.I : ');
     $pdf->setX(60);
-    $pdf->Cell(50,40,'NIT : ');
+    $pdf->Cell(50,40,'RUC : ');
     $pdf->SetFont('Arial','',10);
     $pdf->setX(19);
     $pdf->Cell(2,40,$nit);

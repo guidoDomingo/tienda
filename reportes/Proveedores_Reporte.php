@@ -56,7 +56,7 @@ try {
     $pdf->Cell(30,5,'Cod. Interno',0,0,'L',1);
     $pdf->Cell(105,5,'Proveedor',0,0,'L',1);
     $pdf->Cell(21,5,'Telefono',0,0,'L',1);
-    $pdf->Cell(35,5,'Dni',0,0,'L',1);
+    $pdf->Cell(35,5,'C.I',0,0,'L',1);
     $pdf->Cell(22,5,'Ruc',0,0,'C',1);
     $pdf->Cell(80,5,'Contacto',0,0,'L',1);
     $pdf->Cell(20,5,'Estado',0,0,'C',1);

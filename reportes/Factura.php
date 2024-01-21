@@ -256,7 +256,7 @@ try {
 
 		// 	$pdf->Text(2, $get_Y + 47, '-----------------------------------------------------------------------');
 		// 	$pdf->SetFont('Arial', 'BI', 8.5);
-		// 	$pdf->Text(3, $get_Y + 52, 'Son: ' . $sonletras . ' soles');
+		// 	$pdf->Text(3, $get_Y + 52, 'Son: ' . $sonletras . ' Gs.');
 		// 	if ($estado == '2') :
 		// 		$pdf->Text(3, $get_Y + 55, 'Esta venta ha sido al credito');
 		// 		$pdf->SetFont('Arial', 'B', 8.5);
@@ -459,7 +459,7 @@ try {
 		/////////////////////////////
 		$header = array("", "");
 		$data2 = array(
-			array("Subtotal", $sumas),
+			array("Subtotal", $total - $iva),
 			array("Descuento", $descuento),
 			array("Impuesto", $iva),
 			array("Total", $total),
@@ -567,7 +567,7 @@ try {
 
 			$pdf->Text(2, $get_Y + 47, '-----------------------------------------------------------------------');
 			$pdf->SetFont('Arial', 'BI', 8.5);
-			$pdf->Text(3, $get_Y + 52, 'Son: ' . $sonletras . ' soles');
+			$pdf->Text(3, $get_Y + 52, 'Son: ' . $sonletras . ' Gs.');
 			if ($estado == '2') :
 				$pdf->Text(3, $get_Y + 55, 'Esta venta ha sido al credito');
 				$pdf->SetFont('Arial', 'B', 8.5);

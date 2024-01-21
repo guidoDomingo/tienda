@@ -615,7 +615,7 @@
 													<tr>
 														<td width="5%" class="text-bold text-left">PROVEEDOR</td>
 														<td width="30%"></td>
-														<td width="2%" class="text-bold text-left">CUI</td>
+														<td width="2%" class="text-bold text-left">C.I</td>
 														<td width="30%"></td>
 													</tr>
 													<tr>
