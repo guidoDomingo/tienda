@@ -1,6 +1,6 @@
 <?php
 
-    //app.conf.php es el archivo que maneja toda la aplicacion.
+    //app.conf.php es el archivo que maneja toda la aplicacion.gdfgdfg
     define("DEFAULT_VIEW","Login");  // layout vista si no ha iniciado sesion
     define("DEFAULT_LAYOUT","general.lyt.php");// default para el resto del contenido
     define("PATH_VIEW",realpath("./view/"));// carpeta de vista
