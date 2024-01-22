@@ -1,5 +1,5 @@
 <?php
-	// session_start(); estamos probando dfgdfgdfgdf
+	// session_start(); estamos probando dfgdfgdfgdfdsfsdfsdf
 	 require_once("config/app.conf.php");
 	 date_default_timezone_set('America/Asuncion');
 
