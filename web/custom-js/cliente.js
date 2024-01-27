@@ -162,7 +162,7 @@ $(function() {
 
      $("#txtLimitC").TouchSpin({
          min: 0.00,
-         max: 100000,
+         max: 5000000,
          step: 0.01,
          decimals: 2,
          prefix: 'Q'
