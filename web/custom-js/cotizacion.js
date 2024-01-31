@@ -946,7 +946,7 @@ function enviar_data(){
                 $("#btncancelar").hide();
                 $('#modal_iconified_cash').modal('toggle');
                 swal("Espere un momento..");
-                window.open('reportes/Cotizacion.php?cotizacion=""',
+                window.open('?View=Cotizaciones',
                 'win2',
                 'status=yes,toolbar=yes,scrollbars=yes,titlebar=yes,menubar=yes,'+
                 'resizable=yes,width=800,height=1000  ,directories=no,location=no'+
