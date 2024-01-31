@@ -927,7 +927,7 @@ function enviar_data(){
         dataString+='&tipo_entrega='+tipo_entrega+'&idcliente='+idcliente+'&sumas='+sumas+'&iva='+iva+'&a_nombre='+a_nombre;
         dataString+='&retenido='+retenido+'&exento='+exento+'&descuento='+descuentos+'&total='+total+'&pagado='+pagado+'&proceso='+proceso;
 
-        //console.log(dataString);
+      console.log(dataString);
 
       if(total > 0.00){
 
