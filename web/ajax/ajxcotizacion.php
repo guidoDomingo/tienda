@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 				$tipo_entrega = trim($_POST['tipo_entrega']);
 				$idcliente = trim($_POST['idcliente']);
 				$sumas = trim($_POST['sumas']);
-				$iva = trim($_POST['iva']);
+				$iva = trim($_POST['iva']) ?? 0.00;;
 				$exento = trim($_POST['exento']);
 				$retenido = trim($_POST['retenido']);
 				$descuento = trim($_POST['descuento']);
