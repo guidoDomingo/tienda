@@ -846,7 +846,7 @@ function enviar_data(){
   var a_nombre = $("#cbCliente option:selected").text();
   var tipo_entrega = $('#cbEntrega').val();
   var sumas = $("#sumas").text();
-  var iva = 0.00;
+  var iva = "0.00";
   var exento = $("#exentas").text();
   var retenido = $("#ivaretenido").text();
   var descuentos = $("#descuentos").text();
