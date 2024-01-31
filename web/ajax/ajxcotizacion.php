@@ -38,20 +38,20 @@ if (!empty($_POST)) {
 				$sonletras = num2letras($total);
 
 				// Imprimir los datos usando echo o print
-				echo "cuantos: $cuantos\n";
-				echo "stringdatos: $stringdatos\n";
-				echo "listadatos: " . print_r($listadatos, true) . "\n";
-				echo "a_nombre: $a_nombre\n";
-				echo "pagado: $pagado\n";
-				echo "tipo_entrega: $tipo_entrega\n";
-				echo "idcliente: $idcliente\n";
-				echo "sumas: $sumas\n";
-				echo "iva: $iva\n";
-				echo "exento: $exento\n";
-				echo "retenido: $retenido\n";
-				echo "descuento: $descuento\n";
-				echo "total: $total\n";
-				echo "sonletras: $sonletras\n";
+				// echo "cuantos: $cuantos\n";
+				// echo "stringdatos: $stringdatos\n";
+				// echo "listadatos: " . print_r($listadatos, true) . "\n";
+				// echo "a_nombre: $a_nombre\n";
+				// echo "pagado: $pagado\n";
+				// echo "tipo_entrega: $tipo_entrega\n";
+				// echo "idcliente: $idcliente\n";
+				// echo "sumas: $sumas\n";
+				// echo "iva: $iva\n";
+				// echo "exento: $exento\n";
+				// echo "retenido: $retenido\n";
+				// echo "descuento: $descuento\n";
+				// echo "total: $total\n";
+				// echo "sonletras: $sonletras\n";
 
 				if ($tipo_entrega == '1') {
 					$entrega = 'INMEDIATA';
