@@ -1,5 +1,8 @@
 <?php
+
+
 require('fpdf/fpdf.php');
+
 $idventa =  base64_decode(isset($_GET['venta']) ? $_GET['venta'] : '');
 
 class PDF_MC_Table extends FPDF
@@ -101,6 +104,12 @@ class PDF_MC_Table extends FPDF
 try {
 	function __autoload($className)
 	{
+		// Verificar si la clase pertenece al namespace de mPDF
+		if (strpos($className, 'Mpdf\\') === 0) {
+			// No hacer nada, permitir que Composer cargue la clase
+			return;
+		}
+
 		$model = "../model/" . $className . "_model.php";
 		$controller = "../controller/" . $className . "_controller.php";
 
@@ -177,6 +186,50 @@ try {
 
 
 	if ($tipo_comprobante == '3') {
+
+		require_once 'C:\xampp743\htdocs\tienda1\vendor\autoload.php';
+		// Resto de tu código HTML y PHP...
+
+		// Crear una instancia de mPDF
+		$mpdf = new \Mpdf\Mpdf();
+
+		// Definir todas las variables
+		$datos = [
+			'empresa' => $empresa,
+			'direccion' => $direccion,
+			'nombre_cliente' => $nombre_cliente,
+			'numero_cedula_c' => $numero_cedula_c,
+			'serie' => $serie,
+			'numero_comprobante' => $numero_comprobante,
+			'numero_resolucion' => $numero_resolucion,
+			'fecha_inicio' => $fecha_inicio,
+			'fecha_fin' => $fecha_fin,
+			'ruc' => $ruc,
+			'detalle' => [], // Inicializar como un array vacío, se llenará más adelante
+			'total' => $total,
+			'iva' => $iva,
+			'descuento' => $descuento,
+			'sonletras' => $sonletras,
+		];
+
+		// Incluir detalles en el array de datos
+		while ($row = $detalle->fetch(PDO::FETCH_ASSOC)) {
+			$datos['detalle'][] = [
+				'nombre_producto' => $row['nombre_producto'],
+				'cantidad' => $row['cantidad'],
+				'precio_unitario' => $row['precio_unitario'],
+				'importe' => $row['importe'],
+			];
+		}
+
+		// Generar el HTML y cargarlo en mPDF
+		ob_start();
+		include __DIR__ . '/../reportes/facturas/vista.php'; // Reemplaza con la ruta correcta hacia tu archivo PHP
+		$html = ob_get_clean();
+		$mpdf->WriteHTML($html);
+
+		// Guardar o mostrar el PDF generado
+		$mpdf->Output('nombre_del_archivo.pdf', 'D');
 
 		// $pdf->SetFont('Arial', '', 12);
 		// $pdf->SetAutoPageBreak(true, 1);
