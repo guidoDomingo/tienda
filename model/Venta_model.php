@@ -138,7 +138,7 @@
 				$dbconec = null;
 			} catch (Exception $e) {
 
-				echo '<span class="label label-danger label-block">ERROR AL CARGAR LOS DATOS, PRESIONE F5</span>';
+				echo '<span class="label label-danger label-block">ERROR AL CARGAR LOS DATOS, PRESIONE F5</span>'. $e->getMessage();
 			}
 		}
 
