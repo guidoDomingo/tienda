@@ -182,6 +182,7 @@ try {
 
 	$pdf = new PDF_MC_Table('P', 'mm', array(76, 180));
 	$pdf->AddPage();
+	$pdf->SetFont('Arial', '', 12); // Por ejemplo, Arial, tamaño 12
 	$pdf->AliasNbPages();
 
 
