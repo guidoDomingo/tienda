@@ -138,8 +138,8 @@ try {
 		$numero_cedula = $column["p_numero_nit"];
 		$ruc = $column["p_numero_nrc"];
 		$fecha_resolucion = $column["p_fecha_resolucion"];
-		$fecha_inicio = $column["p_fecha_inicio"] ?? '';
-		$fecha_fin = $column["p_fecha_fin"] ?? '';
+		$fecha_inicio = $column["p_fecha_inicio"] ?? 'INICIO';
+		$fecha_fin = $column["p_fecha_fin"] ?? 'FIN';
 		$numero_resolucion = $column["p_numero_resolucion"];
 		$serie = $column["p_serie"];
 		$numero_comprobante = $column["p_numero_comprobante"];
@@ -187,7 +187,7 @@ try {
 
 	if ($tipo_comprobante == '3') {
 
-		require_once 'C:\xampp743\htdocs\tienda1\vendor\autoload.php';
+		require_once __DIR__ . '/../vendor/autoload.php';	
 		// Resto de tu código HTML y PHP...
 
 		// Crear una instancia de mPDF
@@ -199,11 +199,13 @@ try {
 			'direccion' => $direccion,
 			'nombre_cliente' => $nombre_cliente,
 			'numero_cedula_c' => $numero_cedula_c,
+			'empleado' => $empleado,
 			'serie' => $serie,
 			'numero_comprobante' => $numero_comprobante,
 			'numero_resolucion' => $numero_resolucion,
 			'fecha_inicio' => $fecha_inicio,
 			'fecha_fin' => $fecha_fin,
+			'fecha_emision' => date('d-m-Y'),
 			'ruc' => $ruc,
 			'detalle' => [], // Inicializar como un array vacío, se llenará más adelante
 			'total' => $total,

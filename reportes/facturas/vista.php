@@ -156,14 +156,14 @@
             <table style="width:100%" class="grid-container">
                 <tr>
                     <th>
-                        <img src="https://cms.eglobalt.com.py/eglobalt_si.png" width="100">
+                        <img src="data:image/png;base64,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" width="100">
                         <h6 class="receipt-title">
                             <?php echo $datos['empresa']; ?>
                         </h6>
                     </th>
                     <th class="grid-item">
                         <h5 class="receipt-titulo">
-                            Portales Web
+                            Distribuidora 3S
                         </h5>
                         <h5 class="receipt-titulo">
                             Comercio al por menor y al por mayor
@@ -201,17 +201,14 @@
                     <th class="grid-detalle">
                         <h5 class="receipt-detalle">
                             Fecha de Emisión &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                            <b class="datos"><?php echo $datos['ruc']; ?></b>
+                            <b class="datos"><?php echo $datos['fecha_emision']; ?></b>
                         </h5>
                         <h5 class="receipt-detalle">
                             R.U.C. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                            <b class="datos"><?php echo $datos['ruc']; ?></b>
+                            <b class="datos"><?php echo $datos['numero_cedula_c']; ?></b>
                         </h5>
                         <h5 class="receipt-detalle">
-                            Nombre o Razón Social&nbsp;: <b class="datos"><?php echo $datos['ruc']; ?></b>
-                        </h5>
-                        <h5 class="receipt-detalle">
-                            Credito Bancario &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                            Nombre o Razón Social&nbsp;: <b class="datos"><?php echo $datos['nombre_cliente']; ?></b>
                         </h5>
                         <h5 class="receipt-detalle">
                             Dirección &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
@@ -220,12 +217,13 @@
                     <th class="grid-detalle">
                         <h5 class="receipt-detalle">
                             CONDICION DE VENTA: CONTADO &nbsp;&nbsp;
-                            <span id="orangeBox">X</span> &nbsp;&nbsp;&nbsp; CREDITO&nbsp;&nbsp;
+                            <span id="orangeBox">&nbsp;&nbsp;&nbsp;</span> &nbsp;&nbsp;&nbsp; CREDITO&nbsp;&nbsp;
                             <span id="orangeBox">&nbsp;&nbsp;&nbsp;</span>
                         </h5>
+                        <br>
                         <h5 class="receipt-detalle">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vendedor&nbsp;:
-                            <b class="datos">035 TESORERIA - CTA. C</b>
+                            <b class="datos"><?php echo $datos['empleado']; ?></b>
                         </h5>
                         <h5 class="receipt-detalle">
                             &nbsp;&nbsp;&nbsp;

@@ -67,8 +67,8 @@ $(function() {
       }return parseInt(value) > parseInt($min.val());}, "Maximo debe ser mayor a minimo");
 
     jQuery.validator.addMethod("lettersonly", function(value, element) {
-        return this.optional(element) || /^[a-z\s 0-9, / # . ()]+$/i.test(value);
-    }, "No se permiten caracteres especiales");
+        return true;
+    }, "No se permiten caracteres especialess");
 
 
      var validator = $("#frmModal").validate({
