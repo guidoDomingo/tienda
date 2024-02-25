@@ -687,7 +687,7 @@ try {
 
 	$pdf->Output('I', 'Factura_' . $numero_comprobante . '.pdf');
 } catch (Exception $e) {
-
+	echo '<span class="label label-danger label-block">ERROR AL CARGAR LOS DATOS, PRESIONE F5</span>'. $e->getMessage();
 	$pdf->Text(22.8, 5, 'ERROR AL IMPRIMIR COTIZACION');
 	$pdf->Output('I', 'COTIZACION_ERROR.pdf', true);
 }
